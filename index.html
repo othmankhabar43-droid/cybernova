@@ -4,75 +4,173 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CyberNova – Cybersécurité et services informatiques</title>
+<meta name="description" content="CyberNova protège les entreprises et les particuliers contre les menaces informatiques.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
+:root{--g:#00ff88;--g2:#00c46a;--bg:#030806;--card:rgba(6,22,14,.72);--line:rgba(0,255,136,.18);--txt:#d6f5e4;--mut:#86b39b}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,Helvetica,sans-serif;color:#1d2433;line-height:1.6;background:#f5f7fb}
-header{background:#0b1f3a;color:#fff;position:sticky;top:0;z-index:10}
-.nav{max-width:1000px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:14px 20px;flex-wrap:wrap}
-.logo{font-size:1.5rem;font-weight:bold;letter-spacing:1px}.logo span{color:#3fa9f5}
-nav a{color:#fff;text-decoration:none;margin-left:22px;font-weight:bold}
-nav a:hover{color:#3fa9f5}
-.hero{background:linear-gradient(135deg,#0b1f3a,#1f5fa8);color:#fff;text-align:center;padding:70px 20px}
-.hero h1{font-size:2.2rem;margin-bottom:10px}
-section{max-width:1000px;margin:auto;padding:50px 20px}
-h2{color:#0b1f3a;margin-bottom:15px;font-size:1.7rem;border-left:5px solid #3fa9f5;padding-left:12px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:20px}
-.card{background:#fff;border-radius:10px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-.card h3{color:#1f5fa8;margin-bottom:6px;font-size:1.05rem}
-.don{background:#fff;border-radius:10px;padding:25px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-.montant{font-size:2.4rem;color:#e8731a;font-weight:bold;text-align:center;margin:10px 0}
-.photos{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:20px}
-.photos img{width:100%;height:340px;object-fit:cover;border-radius:10px}
-.contact{background:#fff;border-radius:10px;padding:25px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-.badge{display:inline-block;background:#3fa9f5;color:#fff;padding:3px 10px;border-radius:20px;font-size:.85rem;margin-bottom:10px}
-footer{background:#0b1f3a;color:#cfd8e6;text-align:center;padding:18px;font-size:.9rem}
-a.lien{color:#1f5fa8}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--txt);line-height:1.7;overflow-x:hidden}
+#neural{position:fixed;inset:0;z-index:0;pointer-events:none}
+.scan{position:fixed;inset:0;z-index:1;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,255,136,.025) 0 1px,transparent 1px 3px)}
+main,header,footer{position:relative;z-index:2}
+header{position:fixed;top:0;left:0;right:0;z-index:20;backdrop-filter:blur(10px);background:rgba(3,8,6,.7);border-bottom:1px solid var(--line)}
+.nav{max-width:1150px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:16px 24px}
+.logo{font-family:Orbitron;font-weight:900;font-size:1.45rem;letter-spacing:2px;color:#fff;display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo b{color:var(--g);text-shadow:0 0 12px var(--g)}
+.shield{width:30px;height:34px}
+nav a{color:var(--txt);text-decoration:none;margin-left:28px;font-size:.92rem;letter-spacing:1px;text-transform:uppercase;position:relative}
+nav a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--g);box-shadow:0 0 8px var(--g);transition:.3s}
+nav a:hover{color:var(--g)}nav a:hover::after{width:100%}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 24px 60px}
+.tag{font-family:"JetBrains Mono";color:var(--g);border:1px solid var(--line);display:inline-block;padding:6px 16px;border-radius:30px;font-size:.85rem;margin-bottom:26px;background:rgba(0,255,136,.05)}
+.tag::before{content:"● ";animation:blink 1.2s infinite}
+@keyframes blink{50%{opacity:0}}
+.hero h1{font-family:Orbitron;font-size:clamp(2.2rem,6vw,4.6rem);line-height:1.1;color:#fff;margin-bottom:22px}
+.hero h1 span{color:var(--g);text-shadow:0 0 20px rgba(0,255,136,.7)}
+.typed{font-family:"JetBrains Mono";color:var(--mut);font-size:1.05rem;min-height:1.8em}
+.typed::after{content:"_";color:var(--g);animation:blink .8s infinite}
+.btns{margin-top:36px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn{padding:14px 30px;border-radius:6px;font-weight:600;text-decoration:none;letter-spacing:1px;transition:.3s}
+.btn.p{background:var(--g);color:#02140b;box-shadow:0 0 25px rgba(0,255,136,.45)}
+.btn.p:hover{box-shadow:0 0 45px rgba(0,255,136,.8);transform:translateY(-2px)}
+.btn.s{border:1px solid var(--g);color:var(--g)}.btn.s:hover{background:rgba(0,255,136,.1)}
+.stats{display:flex;gap:50px;justify-content:center;margin-top:60px;flex-wrap:wrap}
+.stat b{font-family:Orbitron;font-size:2rem;color:var(--g);display:block}
+.stat small{color:var(--mut);text-transform:uppercase;letter-spacing:1px;font-size:.75rem}
+section{max-width:1150px;margin:auto;padding:110px 24px}
+.lbl{font-family:"JetBrains Mono";color:var(--g);font-size:.85rem;letter-spacing:2px}
+h2{font-family:Orbitron;font-size:clamp(1.7rem,3.5vw,2.6rem);color:#fff;margin:8px 0 22px}
+.lead{max-width:760px;color:var(--mut);font-size:1.08rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-top:46px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:28px;position:relative;overflow:hidden;transition:.35s;backdrop-filter:blur(6px)}
+.card::before{content:"";position:absolute;top:0;left:-100%;width:100%;height:2px;background:linear-gradient(90deg,transparent,var(--g),transparent);transition:.6s}
+.card:hover{transform:translateY(-6px);border-color:var(--g);box-shadow:0 10px 40px rgba(0,255,136,.15)}
+.card:hover::before{left:100%}
+.ico{width:48px;height:48px;border-radius:10px;display:grid;place-items:center;background:rgba(0,255,136,.1);border:1px solid var(--line);margin-bottom:18px;font-size:1.4rem}
+.card h3{color:#fff;font-size:1.1rem;margin-bottom:8px}
+.card p{color:var(--mut);font-size:.95rem}
+.term{background:#010402;border:1px solid var(--line);border-radius:12px;font-family:"JetBrains Mono";font-size:.9rem;margin-top:40px;overflow:hidden}
+.term .bar{padding:10px 14px;border-bottom:1px solid var(--line);display:flex;gap:7px}
+.term .bar i{width:11px;height:11px;border-radius:50%;background:#1d3a2b}.term .bar i:first-child{background:var(--g)}
+.term pre{padding:18px 20px;color:var(--g);white-space:pre-wrap;min-height:150px}
+.don{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.big{font-family:Orbitron;font-size:clamp(2.8rem,7vw,5rem);font-weight:900;color:var(--g);text-shadow:0 0 30px rgba(0,255,136,.6);line-height:1}
+.big small{display:block;font-family:Inter;font-size:1rem;color:var(--mut);font-weight:400;margin-top:10px;text-shadow:none}
+.photos{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.photos figure{border-radius:14px;overflow:hidden;border:1px solid var(--line);position:relative}
+.photos img{width:100%;height:320px;object-fit:cover;display:block;filter:grayscale(.2) contrast(1.05);transition:.5s}
+.photos figure:hover img{transform:scale(1.06);filter:none}
+.photos figure::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(0,255,136,.3);border-radius:14px;pointer-events:none}
+.merci{margin-top:22px;padding:22px;border-left:3px solid var(--g);background:rgba(0,255,136,.05);border-radius:0 10px 10px 0}
+a.lk{color:var(--g)}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:40px}
+.addr{font-size:1.15rem;color:#fff}.addr b{color:var(--g)}
+.new{display:inline-block;background:var(--g);color:#02140b;font-weight:700;font-size:.75rem;padding:4px 12px;border-radius:30px;letter-spacing:1px;margin-bottom:14px;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(0,255,136,.6)}50%{box-shadow:0 0 0 10px rgba(0,255,136,0)}}
+.map{border-radius:14px;overflow:hidden;border:1px solid var(--line);min-height:260px}
+.map iframe{width:100%;height:100%;min-height:260px;border:0;filter:invert(.9) hue-rotate(110deg) saturate(.6)}
+footer{border-top:1px solid var(--line);text-align:center;padding:30px;color:var(--mut);font-size:.85rem;font-family:"JetBrains Mono"}
+.reveal{opacity:0;transform:translateY(40px);transition:1s cubic-bezier(.2,.7,.2,1)}
+.reveal.on{opacity:1;transform:none}
+@media(max-width:800px){.don,.contact{grid-template-columns:1fr}nav a{margin-left:14px;font-size:.75rem}.photos img{height:220px}}
+@media(max-width:560px){nav{display:none}}
 </style>
 </head>
 <body>
+<canvas id="neural"></canvas><div class="scan"></div>
+
 <header><div class="nav">
-<div class="logo">Cyber<span>Nova</span></div>
+<a href="#accueil" class="logo"><svg class="shield" viewBox="0 0 24 28"><path d="M12 1 2 5v8c0 6.5 4.3 11.7 10 14 5.7-2.3 10-7.5 10-14V5z" fill="none" stroke="#00ff88" stroke-width="1.8"/><path d="m7.5 14 3 3 6-6.5" fill="none" stroke="#00ff88" stroke-width="2"/></svg>CYBER<b>NOVA</b></a>
 <nav><a href="#accueil">Accueil</a><a href="#a-propos">À propos</a><a href="#levee-de-fonds">Levée de fonds</a><a href="#contact">Contactez-nous</a></nav>
 </div></header>
 
-<div class="hero" id="accueil">
-<h1>Votre sécurité numérique, notre priorité</h1>
-<p>CyberNova protège les entreprises et les particuliers contre les menaces informatiques.</p>
+<main>
+<div class="hero" id="accueil"><div>
+<div class="tag">SYSTÈMES PROTÉGÉS · SURVEILLANCE 24/7</div>
+<h1>Votre sécurité numérique,<br><span>notre priorité.</span></h1>
+<p class="typed" id="typed"></p>
+<div class="btns"><a href="#a-propos" class="btn p">Découvrir nos services</a><a href="#contact" class="btn s">Nous joindre</a></div>
+<div class="stats">
+<div class="stat"><b>24/7</b><small>Surveillance</small></div>
+<div class="stat"><b>100 %</b><small>Données chiffrées</small></div>
+<div class="stat"><b>150 000 $</b><small>Amassés pour la communauté</small></div>
 </div>
+</div></div>
 
-<section id="a-propos">
-<h2>À propos</h2>
-<p>CyberNova est une entreprise spécialisée en cybersécurité et en services informatiques. Nous aidons les entreprises et les particuliers à protéger leurs données, à sécuriser leurs réseaux et à utiliser la technologie en toute confiance.</p>
-<div class="cards">
-<div class="card"><h3>Audit de sécurité</h3><p>Analyse de vos systèmes pour repérer les failles.</p></div>
-<div class="card"><h3>Protection des postes</h3><p>Antivirus, pare-feu et mises à jour gérés pour vous.</p></div>
-<div class="card"><h3>Sauvegarde des données</h3><p>Copies sécurisées pour ne jamais perdre vos fichiers.</p></div>
-<div class="card"><h3>Soutien et formation</h3><p>Aide technique et formation aux bonnes pratiques en ligne.</p></div>
+<section id="a-propos" class="reveal">
+<div class="lbl">// 01 — À PROPOS</div>
+<h2>Qui sommes-nous?</h2>
+<p class="lead">CyberNova est une entreprise spécialisée en cybersécurité et en services informatiques. Nous aidons les entreprises et les particuliers à protéger leurs données, à sécuriser leurs réseaux et à utiliser la technologie en toute confiance.</p>
+<div class="grid">
+<div class="card"><div class="ico">🛡️</div><h3>Audit de sécurité</h3><p>Analyse complète de vos systèmes pour repérer et corriger les failles avant qu’elles ne soient exploitées.</p></div>
+<div class="card"><div class="ico">💻</div><h3>Protection des postes</h3><p>Antivirus, pare-feu et mises à jour gérés pour garder vos appareils à l’abri des menaces.</p></div>
+<div class="card"><div class="ico">🔐</div><h3>Sauvegarde des données</h3><p>Copies chiffrées et sécurisées pour ne jamais perdre vos fichiers importants.</p></div>
+<div class="card"><div class="ico">🧠</div><h3>Soutien et formation</h3><p>Aide technique rapide et formation de vos équipes aux bonnes pratiques en ligne.</p></div>
 </div>
+<div class="term"><div class="bar"><i></i><i></i><i></i></div><pre id="term"></pre></div>
 </section>
 
-<section id="levee-de-fonds">
+<section id="levee-de-fonds" class="reveal">
+<div class="lbl">// 02 — ENGAGEMENT COMMUNAUTAIRE</div>
 <h2>Merci pour votre générosité!</h2>
 <div class="don">
-<p>CyberNova a participé à une levée de fonds au profit du <a class="lien" href="https://www.breakfastclubcanada.org/fr/" target="_blank">Club des petits déjeuners</a> de Coteau-Rouge, qui offre des déjeuners chauds aux élèves des écoles primaires du quartier.</p>
-<p class="montant">150 000 $ amassés en dons</p>
-<p>Nous remercions chaleureusement nos clients : cet événement n’aurait pas été possible sans votre soutien et votre générosité.</p>
+<div>
+<div class="big" id="count">0 $<small>amassés en dons</small></div>
+<p class="lead" style="margin-top:24px">CyberNova a participé à une levée de fonds au profit du <a class="lk" href="https://www.breakfastclubcanada.org/fr/" target="_blank" rel="noopener">Club des petits déjeuners</a> de Coteau-Rouge, qui offre des déjeuners chauds aux élèves des écoles primaires du quartier.</p>
+<div class="merci">Nous remercions chaleureusement nos clients : cet événement n’aurait pas été possible sans votre soutien et votre générosité.</div>
+</div>
 <div class="photos">
-<img src="images/photo1.jpg" alt="Participant à la levée de fonds pour le Club des petits déjeuners de Coteau-Rouge">
-<img src="images/photo2.jpg" alt="Bénévoles qui préparent des boîtes de dons pour le Club des petits déjeuners">
+<figure><img src="images/photo1.jpg" alt="Participant à la levée de fonds pour le Club des petits déjeuners de Coteau-Rouge"></figure>
+<figure><img src="images/photo2.jpg" alt="Bénévoles qui préparent des boîtes de dons pour le Club des petits déjeuners"></figure>
 </div>
 </div>
 </section>
 
-<section id="contact">
-<h2>Contactez-nous</h2>
+<section id="contact" class="reveal">
+<div class="lbl">// 03 — CONTACTEZ-NOUS</div>
+<h2>Nous avons déménagé</h2>
 <div class="contact">
-<span class="badge">Nouvelle adresse</span>
-<p>CyberNova s’agrandit! Nous avons le plaisir de vous accueillir à notre nouvelle adresse :</p>
-<p><strong>Plaza Cestar</strong><br>174, chemin du Coteau-Rouge<br>Longueuil (Québec)  H0H 0H0</p>
+<div class="card">
+<span class="new">NOUVELLE ADRESSE</span>
+<p style="color:var(--mut);margin-bottom:16px">CyberNova s’agrandit! Nous avons le plaisir de vous accueillir à notre nouvelle adresse :</p>
+<p class="addr"><b>Plaza Cestar</b><br>174, chemin du Coteau-Rouge<br>Longueuil (Québec)  H0H 0H0</p>
+</div>
+<div class="map"><iframe loading="lazy" title="Carte" src="https://www.google.com/maps?q=chemin+du+Coteau-Rouge,+Longueuil,+QC&output=embed"></iframe></div>
 </div>
 </section>
+</main>
 
-<footer>© 2026 CyberNova – Tous droits réservés</footer>
+<footer>© 2026 CYBERNOVA · TOUS DROITS RÉSERVÉS · <span style="color:var(--g)">[ CONNEXION SÉCURISÉE ]</span></footer>
+
+<script>
+// Réseau de neurones animé
+const c=document.getElementById('neural'),x=c.getContext('2d');let W,H,N=[],m={x:-999,y:-999};
+function rs(){W=c.width=innerWidth;H=c.height=innerHeight;const n=Math.min(110,Math.floor(W*H/14000));N=[];for(let i=0;i<n;i++)N.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5,r:Math.random()*2+1,p:Math.random()*6})}
+addEventListener('resize',rs);addEventListener('mousemove',e=>{m.x=e.clientX;m.y=e.clientY});rs();
+let pulses=[];
+function f(t){x.clearRect(0,0,W,H);
+for(const a of N){a.x+=a.vx;a.y+=a.vy;if(a.x<0||a.x>W)a.vx*=-1;if(a.y<0||a.y>H)a.vy*=-1;
+const dx=a.x-m.x,dy=a.y-m.y,d=Math.hypot(dx,dy);if(d<140){a.x+=dx/d*1.2;a.y+=dy/d*1.2}}
+for(let i=0;i<N.length;i++)for(let j=i+1;j<N.length;j++){const a=N[i],b=N[j],d=Math.hypot(a.x-b.x,a.y-b.y);
+if(d<150){x.strokeStyle=`rgba(0,255,136,${(1-d/150)*.35})`;x.lineWidth=.7;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke();
+if(Math.random()<.0009&&pulses.length<40)pulses.push({a,b,t:0})}}
+pulses=pulses.filter(p=>{p.t+=.02;const px=p.a.x+(p.b.x-p.a.x)*p.t,py=p.a.y+(p.b.y-p.a.y)*p.t;
+x.fillStyle='#00ff88';x.shadowColor='#00ff88';x.shadowBlur=12;x.beginPath();x.arc(px,py,2.2,0,7);x.fill();x.shadowBlur=0;return p.t<1});
+for(const a of N){const g=.6+.4*Math.sin(t/600+a.p);x.fillStyle=`rgba(0,255,136,${g})`;x.shadowColor='#00ff88';x.shadowBlur=8;x.beginPath();x.arc(a.x,a.y,a.r,0,7);x.fill();x.shadowBlur=0}
+requestAnimationFrame(f)}requestAnimationFrame(f);
+// Texte tapé
+const ph=['> Analyse des menaces en temps réel...','> Chiffrement de bout en bout activé.','> Vos données, protégées par CyberNova.'];let pi=0,ci=0,del=false;const ty=document.getElementById('typed');
+(function tp(){const s=ph[pi];ty.textContent=s.slice(0,ci);if(!del&&ci<s.length)ci++;else if(del&&ci>0)ci--;else if(!del){del=true;return setTimeout(tp,1600)}else{del=false;pi=(pi+1)%ph.length}setTimeout(tp,del?25:55)})();
+// Terminal
+const L=['$ cybernova --scan reseau.local','[OK] 248 appareils détectés','[OK] Pare-feu actif · 0 intrusion','[OK] Sauvegarde chiffrée AES-256 terminée','[✓] Système sécurisé. Bonne journée!'];let li=0;const te=document.getElementById('term');let started=false;
+function term(){if(li<L.length){te.textContent+=L[li++]+'\n';setTimeout(term,700)}}
+// Apparition + compteur
+let counted=false;const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');
+if(e.target.id==='a-propos'&&!started){started=true;term()}
+if(e.target.id==='levee-de-fonds'&&!counted){counted=true;const el=document.getElementById('count'),sm=el.querySelector('small').outerHTML;let v=0;const st=setInterval(()=>{v+=2500;if(v>=150000){v=150000;clearInterval(st)}el.innerHTML=v.toLocaleString('fr-CA').replace(/\u202f|\u00a0/g,' ')+' $'+sm},16)}}}),{threshold:.2});
+document.querySelectorAll('.reveal').forEach(s=>io.observe(s));
+</script>
 </body>
 </html>
